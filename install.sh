@@ -3,7 +3,7 @@
 # Run from inside the cloned repo:  ./install.sh
 set -e
 
-LABEL="com.mohammed.keyboard-keepalive"
+LABEL="com.local.keyboard-keepalive"
 SCRIPT_SRC="keyboard-keepalive.sh"
 PLIST_SRC="${LABEL}.plist"
 PLIST_DEST="$HOME/Library/LaunchAgents/${LABEL}.plist"

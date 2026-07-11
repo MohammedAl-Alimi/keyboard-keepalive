@@ -29,18 +29,20 @@ mv keyboard-keepalive.sh ~/keyboard-keepalive.sh
 chmod +x ~/keyboard-keepalive.sh
 
 # 2. Set your username in the plist, then install it
-sed -i '' "s/REPLACE_WITH_YOUR_USERNAME/$(whoami)/g" com.mohammed.keyboard-keepalive.plist
-mv com.mohammed.keyboard-keepalive.plist ~/Library/LaunchAgents/
+sed -i '' "s/REPLACE_WITH_YOUR_USERNAME/$(whoami)/g" com.local.keyboard-keepalive.plist
+mv com.local.keyboard-keepalive.plist ~/Library/LaunchAgents/
 
 # 3. Load it (starts now and at every login)
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.mohammed.keyboard-keepalive.plist
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.local.keyboard-keepalive.plist
 ```
 
 Check it's running:
 
 ```bash
-launchctl print gui/$(id -u)/com.mohammed.keyboard-keepalive | grep -E "state|pid"
+launchctl print gui/$(id -u)/com.local.keyboard-keepalive | grep -E "state|pid"
 ```
+
+Or just run `./install.sh` from the repo, which does all of the above.
 
 ## ⚠️ Accessibility permission
 
@@ -60,8 +62,8 @@ Until it's granted, the idle check still runs but the tap silently fails (errors
 ## Uninstall
 
 ```bash
-launchctl bootout gui/$(id -u)/com.mohammed.keyboard-keepalive
-rm ~/Library/LaunchAgents/com.mohammed.keyboard-keepalive.plist
+launchctl bootout gui/$(id -u)/com.local.keyboard-keepalive
+rm ~/Library/LaunchAgents/com.local.keyboard-keepalive.plist
 rm ~/keyboard-keepalive.sh
 ```
 
